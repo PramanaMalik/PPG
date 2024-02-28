@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Titik Koordinat</title>
+<style>
+    #canvas {
+        background-color:rgb(63, 63, 63);
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+    // Mendapatkan elemen canvas
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    // Fungsi untuk membuat titik koordinat di canvas
+    function drawPoint(x, y) {
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, 2 * Math.PI);
+        ctx.fillStyle = "blueviolet";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Array untuk menyimpan koordinat titik-titik
+    var coordinates = [];
+
+    // Membuat 10 titik koordinat acak
+    for (var i = 0; i < 10; i++) {
+        var x = Math.random() * canvas.width;
+        var y = Math.random() * canvas.height;
+        coordinates.push({x: x, y: y});
+    }
+
+    // Menggambar titik-titik koordinat
+    coordinates.forEach(coord => {
+        drawPoint(coord.x, coord.y);
+    });
+</script>
+</body>
+</html>
